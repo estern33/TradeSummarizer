@@ -1,7 +1,3 @@
-//
-// Created by Evan on 2/4/2020.
-//
-
 #include <stdexcept>
 
 #include "quantity_at_price.h"

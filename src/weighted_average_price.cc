@@ -1,7 +1,3 @@
-//
-// Created by Evan on 2/4/2020.
-//
-
 #include "weighted_average_price.h"
 
 namespace tradesummarizer {

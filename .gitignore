@@ -976,3 +976,4 @@ Mkfile.old
 dkms.conf
 /.idea/codeStyles/codeStyleConfig.xml
 /.idea/misc.xml
+*.name

@@ -1,7 +1,3 @@
-//
-// Created by Evan on 2/4/2020.
-//
-
 #ifndef TRADESUMMARIZER_QUANTITY_AT_PRICE_H
 #define TRADESUMMARIZER_QUANTITY_AT_PRICE_H
 
