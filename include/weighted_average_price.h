@@ -16,8 +16,8 @@ namespace tradesummarizer {
 class WeightedAveragePrice {
 public:
     // Each value to be included in this VWAP should be added via the AddTrade function as a QuantityAtPrice.
-    // The QuantityAtPrice class works with move semantics instead of passing by const reference (or at least I know it's not a copy, I deleted the copy constructor).
-    // Which is better in C++11?  https://stackoverflow.com/questions/270408/is-it-better-in-c-to-pass-by-value-or-pass-by-constant-reference/270435
+    // The QuantityAtPrice class works with move semantics instead of passing by const reference (or at least I know it's not a copy, I deleted the copy constructor to test).
+    // Which is better more efficient post C++11?  https://stackoverflow.com/questions/270408/is-it-better-in-c-to-pass-by-value-or-pass-by-constant-reference/270435
     // Not sure it matters in this case, but if this were performance sensitive, I'd have to do more research.
     void AddTrade(const QuantityAtPrice &trade);
 
@@ -25,11 +25,11 @@ public:
     // Can be called, have more trades added, then called again for the updated value.
     // Truncated to whole numbers, returns long instead of double accordingly.
     // If no trades were recorded, VWAP will return 0.
-    long GetWeightedAveragePrice();
+    unsigned long GetWeightedAveragePrice();
 
 private:
-    long price_times_volume_ = 0; // price is assumed to be a positive integer value per the instructions, assuming quantity is the same, hence price times quantity can be a long
-    long total_volume_ = 0;
+    unsigned long price_times_volume_ = 0; // price is assumed to be a positive integer value per the instructions, assuming quantity is the same, hence price times quantity easily fits in an unsigned long
+    unsigned long total_volume_ = 0;
 };
 
 } //namespace tradesummarizer

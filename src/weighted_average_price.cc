@@ -3,11 +3,11 @@
 namespace tradesummarizer {
 
     void WeightedAveragePrice::AddTrade(const QuantityAtPrice &trade) {
-        price_times_volume_ += trade.Price * trade.Quantity;
-        total_volume_ += trade.Quantity;
+        price_times_volume_ += trade.GetPrice() * trade.GetQuantity();
+        total_volume_ += trade.GetQuantity();
     }
 
-    long WeightedAveragePrice::GetWeightedAveragePrice() {
+    unsigned long WeightedAveragePrice::GetWeightedAveragePrice() {
         if (total_volume_ == 0)
             return 0;
 

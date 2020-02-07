@@ -28,16 +28,17 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
         ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
         EXCLUDE_FROM_ALL)
 
-# Back to TradeSummarizer, include source directory and create executable accordingly
+# Back to TradeSummarizer, include header directory and create executable accordingly
 include_directories(include)
 
-set(SOURCE src/weighted_average_price.cc src/quantity_at_price.cc src/trade_info.cc)
-set(HEADERS include/weighted_average_price.h include/quantity_at_price.h include/trade_info.h)
+set(SOURCE src/weighted_average_price.cc src/quantity_at_price.cc src/trade_info.cc src/trade_summary.cc src/trade_stream_parser.cc)
+set(HEADERS include/weighted_average_price.h include/quantity_at_price.h include/trade_info.h include/trade_summary.h include/trade_stream_parser.h)
+set(TEST_FILES test/quantity_at_price_tests.cc test/weighted_average_price_tests.cc test/trade_info_tests.cc test/trade_summary_tests.cc test/trade_stream_parser_tests.cc)
 
 add_executable(${CMAKE_PROJECT_NAME} src/main.cpp ${SOURCE} ${HEADERS})
 
 # Point unit tests to TradeSummarizer then create all applicable tests
-add_executable(UnitTests ${SOURCE} test/quantity_at_price_tests.cc test/weighted_average_price_tests.cc test/trade_info_tests.cc)
+add_executable(UnitTests ${SOURCE} ${HEADERS} ${TEST_FILES})
 # Link test executable against gtest & gtest_main
 target_link_libraries(UnitTests gtest gtest_main)
-add_test(runUnitTests runUnitTests )
+add_test(UnitTests UnitTests)
