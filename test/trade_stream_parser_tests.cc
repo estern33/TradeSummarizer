@@ -1,14 +1,13 @@
 #include <stdexcept>
 #include "gtest/gtest.h"
-#include "trade_info.h"
-#include "trade_summary.h"
+#include "trade_stream_parser.h"
 
 using namespace std;
 
 namespace {
 
-TEST(TradeStreamParser, InputFileYieldsCorrectOutput) {
-
+TEST(TradeStreamParser, SampleFileYieldsCorrectOutput) {
+    tradesummarizer::TradeStreamParser("sample.csv").WriteResult("sample_output.csv");
 }
 
 }  // namespace

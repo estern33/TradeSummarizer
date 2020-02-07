@@ -12,7 +12,7 @@ TradeInfo TradeInfo::ParseTradeInfo(string trade_string) {
         throw invalid_argument(
                 "Trade info string passed in to ParseTradeInfo was empty.  Must contain four comma separated values, refer to instructions.txt.");
     // Regex with four capture groups, matching the csv format timestamp,symbol,quantity,price
-    const regex csv_regex("^(\\d+),([a-zA-Z]+),(\\d+),(\\d+)$");
+    const regex csv_regex("^(\\d+),([a-zA-Z]+),(\\d+),(\\d+)[\r\n]*$");
     smatch match;
 
     if (regex_search(trade_string, match, csv_regex)) {

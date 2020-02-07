@@ -11,7 +11,7 @@ using namespace std;
 //   the summarized data per symbol will fit in memory.
 
 // Uses classes provided in TradeSummarizer to ingest trades from input.csv and write a summary to output.csv.
-// The input file is expected to be in the same directory as the executable.  The output file will be written to the same directory.
+// The input file is expected to be in the working directory.  The output file will be written to the same directory.
 // This main uses file streams to read and record results to local file, but the system is intended to be able to work with remote file systems or any other stream implementation.
 // Program returns 0 if trades were successfully summarized, -1 otherwise.
 int main() {
