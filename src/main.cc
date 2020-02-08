@@ -1,4 +1,5 @@
 #include <iostream>
+#include "trade_stream_parser.h"
 
 using namespace std;
 
@@ -9,14 +10,20 @@ using namespace std;
 // - Assuming 0 is an acceptable WeightedAveragePrice if no trades is received.  Realistically, the program would not process a VWAP for a file that had no trades anyway.
 // - Assuming that even if the source data were from a networked file far larger than the local disk or memory, or from an entirely different method of input and output streaming,
 //   the summarized data per symbol will fit in memory.
+// - Assuming target environment is Windows, did not test or run cross platform.
 
 // Uses classes provided in TradeSummarizer to ingest trades from input.csv and write a summary to output.csv.
 // The input file is expected to be in the working directory.  The output file will be written to the same directory.
 // This main uses file streams to read and record results to local file, but the system is intended to be able to work with remote file systems or any other stream implementation.
 // Program returns 0 if trades were successfully summarized, -1 otherwise.
-int main() {
-    try {
+int main(int argc, char * argv[]) {
+    if (argc != 1) {
+        cout << "The path to the input csv file should be passed as the one and only one command line argument.\n";
+        return -1;
+    }
 
+    try {
+        tradesummarizer::TradeStreamParser(argv[0]).WriteResult("output.csv");
     }
     catch (exception &e) {
         // Wish I could find a good method for string interpolation a la python.  Did not come across anything on first glace.

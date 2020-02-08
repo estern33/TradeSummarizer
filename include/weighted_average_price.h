@@ -25,7 +25,7 @@ public:
     // Can be called, have more trades added, then called again for the updated value.
     // Truncated to whole numbers, returns long instead of double accordingly.
     // If no trades were recorded, VWAP will return 0.
-    unsigned long GetWeightedAveragePrice();
+    unsigned long GetWeightedAveragePrice() const;
 
 private:
     unsigned long price_times_volume_ = 0; // price is assumed to be a positive integer value per the instructions, assuming quantity is the same, hence price times quantity easily fits in an unsigned long

@@ -13,6 +13,7 @@ TradeSummary::TradeSummary(const TradeInfo &first_trade_info) {
     weighted_average_price_.AddTrade(first_trade_info.GetQuantityAtPrice());
     symbol_ = first_trade_info.GetSymbol();
     volume_ = first_trade_info.GetQuantityAtPrice().GetQuantity();
+    max_price_ = first_trade_info.GetQuantityAtPrice().GetPrice();
 }
 
 // Should be called for each new trade reported for the instrument
@@ -34,7 +35,7 @@ void TradeSummary::UpdateTradeSummary(const TradeInfo &next_trade) {
     weighted_average_price_.AddTrade(next_trade.GetQuantityAtPrice());
 }
 
-string TradeSummary::GetCommaSeparatedTradeSummary() {
+string TradeSummary::GetCommaSeparatedTradeSummary() const{
     //<symbol>,<MaxTimeGap>,<Volume>,<WeightedAveragePrice>,<MaxPrice>
     return symbol_ + "," + to_string(max_time_gap_) + "," + to_string(volume_)  + "," +
         to_string(weighted_average_price_.GetWeightedAveragePrice()) + "," + to_string(max_price_);

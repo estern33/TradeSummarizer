@@ -17,11 +17,11 @@ public:
     // Should be called for each new trade reported for the instrument
     void UpdateTradeSummary(const TradeInfo &next_trade);
 
-    std::string GetCommaSeparatedTradeSummary();
-    unsigned long long GetMaxTimeGap() {return max_time_gap_;}
+    std::string GetCommaSeparatedTradeSummary() const;
+    unsigned long long GetMaxTimeGap() const {return max_time_gap_;}
     unsigned long GetWeightedAveragePrice() {return weighted_average_price_.GetWeightedAveragePrice();}
-    unsigned long GetVolume() {return volume_;}
-    unsigned long GetMaxPrice() {return max_price_;}
+    unsigned long GetVolume() const {return volume_;}
+    unsigned long GetMaxPrice() const {return max_price_;}
 
 private:
     unsigned long long max_time_gap_ = 0; // Since it's technically possible for the time gap to midnight to a mic before the next day, the max value is 86400000000

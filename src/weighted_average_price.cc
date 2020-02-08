@@ -7,7 +7,7 @@ namespace tradesummarizer {
         total_volume_ += trade.GetQuantity();
     }
 
-    unsigned long WeightedAveragePrice::GetWeightedAveragePrice() {
+    unsigned long WeightedAveragePrice::GetWeightedAveragePrice() const {
         if (total_volume_ == 0)
             return 0;
 

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(TradeSummarizer)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -35,10 +36,11 @@ set(SOURCE src/weighted_average_price.cc src/quantity_at_price.cc src/trade_info
 set(HEADERS include/weighted_average_price.h include/quantity_at_price.h include/trade_info.h include/trade_summary.h include/trade_stream_parser.h)
 set(TEST_FILES test/quantity_at_price_tests.cc test/weighted_average_price_tests.cc test/trade_info_tests.cc test/trade_summary_tests.cc test/trade_stream_parser_tests.cc)
 
-add_executable(${CMAKE_PROJECT_NAME} src/main.cpp ${SOURCE} ${HEADERS})
+add_executable(${PROJECT_NAME} src/main.cc ${SOURCE} ${HEADERS})
+target_link_libraries(${PROJECT_NAME} stdc++fs)
 
 # Point unit tests to TradeSummarizer then create all applicable tests
 add_executable(UnitTests ${SOURCE} ${HEADERS} ${TEST_FILES})
 # Link test executable against gtest & gtest_main
-target_link_libraries(UnitTests gtest gtest_main)
+target_link_libraries(UnitTests gtest gtest_main stdc++fs)
 add_test(UnitTests UnitTests)
