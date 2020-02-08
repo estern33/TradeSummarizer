@@ -2,6 +2,7 @@
 #define TRADESUMMARIZER_TRADE_SUMMARY_H
 
 #include <string>
+#include "util.h"
 #include "trade_info.h"
 #include "weighted_average_price.h"
 
@@ -12,10 +13,10 @@ namespace tradesummarizer {
 // and output the information in the format specified in instructions.txt.
 class TradeSummary {
 public:
-    TradeSummary(const TradeInfo &first_trade_info);
+    TradeSummary(TradeInfoConstRef first_trade_info);
 
     // Should be called for each new trade reported for the instrument
-    void UpdateTradeSummary(const TradeInfo &next_trade);
+    void UpdateTradeSummary(TradeInfoConstRef next_trade);
 
     std::string GetCommaSeparatedTradeSummary() const;
     unsigned long long GetMaxTimeGap() const {return max_time_gap_;}

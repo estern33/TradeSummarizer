@@ -33,7 +33,7 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
 include_directories(include)
 
 set(SOURCE src/weighted_average_price.cc src/quantity_at_price.cc src/trade_info.cc src/trade_summary.cc src/trade_stream_parser.cc)
-set(HEADERS include/weighted_average_price.h include/quantity_at_price.h include/trade_info.h include/trade_summary.h include/trade_stream_parser.h)
+set(HEADERS include/weighted_average_price.h include/quantity_at_price.h include/trade_info.h include/trade_summary.h include/trade_stream_parser.h include/util.h)
 set(TEST_FILES test/quantity_at_price_tests.cc test/weighted_average_price_tests.cc test/trade_info_tests.cc test/trade_summary_tests.cc test/trade_stream_parser_tests.cc)
 
 add_executable(${PROJECT_NAME} src/main.cc ${SOURCE} ${HEADERS})

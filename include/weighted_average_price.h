@@ -19,7 +19,7 @@ public:
     // The QuantityAtPrice class works with move semantics instead of passing by const reference (or at least I know it's not a copy, I deleted the copy constructor to test).
     // Which is better more efficient post C++11?  https://stackoverflow.com/questions/270408/is-it-better-in-c-to-pass-by-value-or-pass-by-constant-reference/270435
     // Not sure it matters in this case, but if this were performance sensitive, I'd have to do more research.
-    void AddTrade(const QuantityAtPrice &trade);
+    void AddTrade(QuantityAtPriceConstRef trade);
 
     // Get the VWAP for all trades recorded from AddTrade.
     // Can be called, have more trades added, then called again for the updated value.

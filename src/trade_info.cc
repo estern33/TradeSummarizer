@@ -34,7 +34,7 @@ TradeInfo TradeInfo::ParseTradeInfo(string trade_string) {
     throw invalid_argument("Failed to parse trade from csv file.  Expected timestamp,symbol,quantity,price.  Received " + trade_string);
 }
 
-TradeInfo::TradeInfo(std::string symbol, unsigned long long timestamp, const QuantityAtPrice &quantity_at_price) :
+TradeInfo::TradeInfo(std::string symbol, unsigned long long timestamp, QuantityAtPriceConstRef quantity_at_price) :
         symbol_(symbol), timestamp_(timestamp), quantity_at_price_(quantity_at_price) {}
 
 }

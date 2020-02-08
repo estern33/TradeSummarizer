@@ -3,12 +3,13 @@
 #include "quantity_at_price.h"
 #include "trade_info.h"
 #include "trade_summary.h"
+#include "util.h"
 
 using namespace std;
 
 namespace tradesummarizer {
 
-TradeSummary::TradeSummary(const TradeInfo &first_trade_info) {
+TradeSummary::TradeSummary(TradeInfoConstRef first_trade_info) {
     prior_trade_timestamp_ = first_trade_info.GetTimestamp();
     weighted_average_price_.AddTrade(first_trade_info.GetQuantityAtPrice());
     symbol_ = first_trade_info.GetSymbol();
@@ -17,7 +18,7 @@ TradeSummary::TradeSummary(const TradeInfo &first_trade_info) {
 }
 
 // Should be called for each new trade reported for the instrument
-void TradeSummary::UpdateTradeSummary(const TradeInfo &next_trade) {
+void TradeSummary::UpdateTradeSummary(TradeInfoConstRef next_trade) {
     if (next_trade.GetTimestamp() < prior_trade_timestamp_)
         throw invalid_argument("Timestamps should always be progressing in the trade stream, "
                                "but received a negative time gap from " + to_string(prior_trade_timestamp_) +

@@ -21,11 +21,13 @@ public:
     QuantityAtPrice GetQuantityAtPrice() const { return quantity_at_price_; }
 
 private:
-    TradeInfo(std::string symbol, unsigned long long timestamp, const QuantityAtPrice & quantity_at_price);
+    TradeInfo(std::string symbol, unsigned long long timestamp, QuantityAtPriceConstRef quantity_at_price);
     std::string symbol_;
     unsigned long long timestamp_; // Timestamp from file, as represented by mics from midnight.  The max value should be 86400000000 and should therefore exceed the max value of an unsigned long.
     QuantityAtPrice quantity_at_price_;
 };
+
+using TradeInfoConstRef = as_constref<TradeInfo>::type;
 
 } //namespace tradesummarizer
 

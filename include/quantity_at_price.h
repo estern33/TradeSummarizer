@@ -1,6 +1,8 @@
 #ifndef TRADESUMMARIZER_QUANTITY_AT_PRICE_H
 #define TRADESUMMARIZER_QUANTITY_AT_PRICE_H
 
+#include "util.h"
+
 namespace tradesummarizer {
 
 // Immutable representation of a price and quantity pair.
@@ -19,6 +21,9 @@ private:
     // From instructions.txt SafeAssumptions, Price - our currency is an integer based currency.  No decimal points.  Price - Price is always > 0.
     unsigned int price_;
 };
+
+using QuantityAtPriceConstRef = as_constref<QuantityAtPrice>::type;
+
 
 } //namespace tradesummarizer
 
