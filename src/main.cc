@@ -17,13 +17,14 @@ using namespace std;
 // This main uses file streams to read and record results to local file, but the system is intended to be able to work with remote file systems or any other stream implementation.
 // Program returns 0 if trades were successfully summarized, -1 otherwise.
 int main(int argc, char * argv[]) {
-    if (argc != 1) {
+    if (argc != 2) {
         cout << "The path to the input csv file should be passed as the one and only one command line argument.\n";
         return -1;
     }
 
     try {
-        tradesummarizer::TradeStreamParser(argv[0]).WriteResult("output.csv");
+        string input_file_path(argv[1]);
+        tradesummarizer::TradeStreamParser(input_file_path).WriteResult("output.csv");
     }
     catch (exception &e) {
         // Wish I could find a good method for string interpolation a la python.  Did not come across anything on first glace.

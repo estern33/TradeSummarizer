@@ -11,7 +11,7 @@ namespace tradesummarizer {
 
 TradeStreamParser::TradeStreamParser(string input_file_path) {
     if (!experimental::filesystem::exists(input_file_path))
-        throw new runtime_error("No input file found at " + input_file_path);
+        throw runtime_error("No input file found at " + input_file_path);
     ifstream input_file(input_file_path);
     string line;
     while (getline(input_file, line)) {

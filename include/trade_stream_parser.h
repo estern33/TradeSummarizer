@@ -17,6 +17,7 @@ public:
     void WriteResult(std::string output_file_path);
 
 private:
+    // Requirements are that output file is ordered by symbol, map seems similar to java tree map in that it sorts by key.
     std::map<std::string, TradeSummary> trade_summary_per_symbol_;
 };
 
